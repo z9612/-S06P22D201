@@ -13,14 +13,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService{
 
     private final MemberRepository memberRepository;
-
-    public CustomUserDetailService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     //로그인 시에 db에서 유저 정보와 권한 정보를 가져옴
     @Override
