@@ -1,4 +1,4 @@
-package com.spring.sbank.jwt;
+package com.sbank.spring.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.spring.sbank.jwt;
+package com.sbank.spring.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

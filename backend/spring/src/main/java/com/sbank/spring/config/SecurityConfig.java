@@ -1,9 +1,9 @@
-package com.spring.sbank.config;
+package com.sbank.spring.config;
 
-import com.spring.sbank.jwt.JwtAccessDeniedHandler;
-import com.spring.sbank.jwt.JwtAuthenticationEntryPoint;
-import com.spring.sbank.jwt.JwtSecurityConfig;
-import com.spring.sbank.jwt.TokenProvider;
+import com.sbank.spring.jwt.JwtAccessDeniedHandler;
+import com.sbank.spring.jwt.JwtAuthenticationEntryPoint;
+import com.sbank.spring.jwt.JwtSecurityConfig;
+import com.sbank.spring.jwt.TokenProvider;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,7 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
+@EnableWebSecurity //Web 보안 활성화
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final TokenProvider tokenProvider;
@@ -71,9 +71,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests() //HttpServletRequest를 사용하는 요청들에 대한 접근 제한을 설정
             //()안의 api에 대한 요청은 인증없이 접근을 허용함
+            // .antMatchers("/api/user/**").permitAll()
+            .antMatchers("/api/user/hello").permitAll() //Test API
             .antMatchers("/api/user/siginin").permitAll() //로그인 API
             .antMatchers("/api/user/siginup").permitAll() //회원가입 API
             .antMatchers("/api/user/duplicate/**").permitAll() //중복검사 API
+            .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/api-docs", "/api-docs/**").permitAll()
             .anyRequest().authenticated() //나머지 요청들은 모두 인증되어야 함
 
             .and()

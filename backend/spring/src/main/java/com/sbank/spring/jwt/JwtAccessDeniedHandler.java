@@ -1,4 +1,4 @@
-package com.spring.sbank.jwt;
+package com.sbank.spring.jwt;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
