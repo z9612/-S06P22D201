@@ -73,8 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             //()안의 api에 대한 요청은 인증없이 접근을 허용함
             // .antMatchers("/api/user/**").permitAll()
             .antMatchers("/api/user/hello").permitAll() //Test API
-            .antMatchers("/api/user/siginin").permitAll() //로그인 API
-            .antMatchers("/api/user/siginup").permitAll() //회원가입 API
+            .antMatchers("/api/user/signin").permitAll() //로그인 API
+            .antMatchers("/api/user/signup").permitAll() //회원가입 API
             .antMatchers("/api/user/duplicate/**").permitAll() //중복검사 API
             .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/api-docs", "/api-docs/**").permitAll()
             .anyRequest().authenticated() //나머지 요청들은 모두 인증되어야 함
