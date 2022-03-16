@@ -13,15 +13,17 @@ import lombok.Setter;
 
 @Entity //DB의 테이블과 1:1 매핑되는 객체
 @Table(name = "member") //테이블명 member로 지정
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Member implements Serializable {
-    
+
     @Id
-    // @GeneratedValue //자동 증가
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //자동 증가
+    private Long no;
+
     @Column(nullable = false, unique = true)
     private String id;
 
@@ -37,8 +39,7 @@ public class Member implements Serializable {
     @Column(nullable = false)
     private String phone;
 
-    @Column(nullable = false)
-    private Date birthDay;
+    private Date birthday;
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
