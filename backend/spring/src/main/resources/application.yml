@@ -13,9 +13,9 @@ spring:
     #DataBase Settings
     dataSource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/sbank?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
-        username: root #아직 미정(local에서 진행시 각자에게 맞는 포트번호와 아이디 비번으로 변경 후 돌리시면 됩니다!)
-        password: root #아직 미정
+        url: jdbc:mysql://j6d201.p.ssafy.io:3306/sbank?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+        username: root
+        password: root
     
     sql:
         init:
@@ -26,14 +26,14 @@ spring:
         open-in-view: false
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: update
         generate-ddl: false
         show-sql: true
         database: mysql
         properties:
             hibernate:
                 format_sql: true
-        defer-datasource-initialization: true
+        defer-datasource-initialization: true #ddl-auto 실행(스키마 생성) 후 sql 스크립트 작동
 
     # Kakao Settings
     # security:
