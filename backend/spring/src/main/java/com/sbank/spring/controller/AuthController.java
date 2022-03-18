@@ -5,7 +5,6 @@ import javax.validation.Valid;
 import com.sbank.spring.dto.MemberDto;
 import com.sbank.spring.dto.SigninDto;
 import com.sbank.spring.dto.TokenDto;
-import com.sbank.spring.entity.Member;
 import com.sbank.spring.service.AuthService;
 import com.sbank.spring.service.MemberService;
 
@@ -23,7 +22,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-@Tag(name = "AuthController", description = "회원 로그인, 회원가입")
+@Tag(name = "AuthController", description = "회원 관리 API")
 @CrossOrigin(value = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 @RestController
 @RequestMapping("/api/user")
@@ -41,7 +40,7 @@ public class AuthController {
 
     @Operation(summary="회원가입")
     @PostMapping("/signup")
-    public ResponseEntity<Member> signup(@Valid @RequestBody MemberDto memberDto) {
+    public ResponseEntity<MemberDto> signup(@Valid @RequestBody MemberDto memberDto) {
         return ResponseEntity.ok(mamberService.signup(memberDto));
     }
 
