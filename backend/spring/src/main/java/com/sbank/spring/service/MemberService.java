@@ -23,6 +23,17 @@ public class MemberService {
     
     @Transactional //트랜잭션 속성 부여
     public Member signup(MemberDto memberDto) {
+        memberDto.setAuthority("ROLE_USER"); //lombok 방식으로 해결되면 지울 것!
         return memberRepository.save(MemberDto.toEntity(memberDto, passwordEncoder));
+    }
+
+    @Transactional //아이디 중복 검사
+    public boolean duplicateId(String id) {
+        return memberRepository.existsById(id);
+    }
+
+    @Transactional //이메일 중복 검사
+    public boolean duplicateEmail(String email) {
+        return memberRepository.existsByEmail(email);
     }
 }

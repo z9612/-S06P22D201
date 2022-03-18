@@ -46,15 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             //위의 요청들은 spring security 로직 수행X
     }
 
-    //관리자 관련
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("root")
-                .password(passwordEncoder().encode("root"))
-                .authorities("ADMIN");
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

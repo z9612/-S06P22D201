@@ -1,8 +1,6 @@
 package com.sbank.spring.dto;
 
-import java.util.Date;
-
-import com.sbank.spring.entity.Authority;
+import javax.validation.constraints.NotNull;
 import com.sbank.spring.entity.Member;
 
 import lombok.AllArgsConstructor;
@@ -19,13 +17,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder //데이터 일관성을 위해 정보들을 다 받은 후에 객체를 생성
 public class MemberDto {
 
+    @NotNull
     private String id; //아이디
+    @NotNull
     private String password; //비밀번호
+    @NotNull
     private String name; //이름
+    @NotNull
     private String email; //이메일
-    private Date birthday; //생년월일
+    @NotNull
+    private String birthday; //생년월일
+    @NotNull
     private String phone; //전화번호
-    private Authority authority; //유형(사용자, 관리자)
+    private String authority; //유형(사용자, 관리자)
 
     public static Member toEntity(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         return Member.builder()

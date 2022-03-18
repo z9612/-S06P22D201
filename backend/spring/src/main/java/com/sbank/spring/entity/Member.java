@@ -1,8 +1,6 @@
 package com.sbank.spring.entity;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -39,8 +37,9 @@ public class Member implements Serializable {
     @Column(nullable = false)
     private String phone;
 
-    private Date birthday;
+    @Column(nullable = false)
+    private String birthday;
 
-    @Enumerated(EnumType.STRING)
-    private Authority authority;
+    @Column(nullable = false)
+    private String authority;
 }
