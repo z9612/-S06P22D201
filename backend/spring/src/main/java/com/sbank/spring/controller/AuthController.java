@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 
     private final AuthService authService;
-    private final MemberService mamberService;
+    private final MemberService memberService;
     
     @Operation(summary="로그인")
     @PostMapping("/signin")
@@ -38,21 +38,29 @@ public class AuthController {
         return ResponseEntity.ok(authService.signin(signinDto));
     }
 
-    @Operation(summary="회원가입")
+    @Operation(summary="회원가입", description="회원가입 성공 시 true, 실패 시 false 리턴")
     @PostMapping("/signup")
-    public ResponseEntity<MemberDto> signup(@Valid @RequestBody MemberDto memberDto) {
-        return ResponseEntity.ok(mamberService.signup(memberDto));
+    public ResponseEntity<Boolean> signup(@Valid @RequestBody MemberDto memberDto) {
+        MemberDto member = memberService.signup(memberDto);
+        if(member != null) return ResponseEntity.ok(true);
+        else return ResponseEntity.ok(false);
     }
 
     @Operation(summary="아이디 중복 검사", description="있는 아이디라면 true, 없는 아이디라면 false 리턴")
     @GetMapping("/duplicate/id/{id}")
     public ResponseEntity<Boolean> duplicateId(@PathVariable String id) {
-        return ResponseEntity.ok(mamberService.duplicateId(id));
+        return ResponseEntity.ok(memberService.duplicateId(id));
     }
 
     @Operation(summary="이메일 중복 검사", description="있는 이메일라면 true, 없는 이메일라면 false 리턴")
     @GetMapping("/duplicate/email/{email}")
     public ResponseEntity<Boolean> duplicateEmail(@PathVariable String email) {
-        return ResponseEntity.ok(mamberService.duplicateEmail(email));
+        return ResponseEntity.ok(memberService.duplicateEmail(email));
+    }
+
+    @Operation(summary="회원 정보 조회")
+    @PostMapping("/api/user/info")
+    public ResponseEntity<MemberDto> userInfo() {
+        return ResponseEntity.ok(memberService.memberInfo());
     }
 }

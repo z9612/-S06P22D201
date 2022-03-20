@@ -60,7 +60,6 @@ public class MemberDto {
         .email(member.getEmail())
         .birthday(member.getBirthday())
         .phone(member.getPhone())
-        .authority(member.getAuthority())
         .build();
     }
 
