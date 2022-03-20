@@ -2,6 +2,7 @@ package com.sbank.spring.controller;
 
 import javax.validation.Valid;
 
+import com.sbank.spring.dto.ChangePwdDto;
 import com.sbank.spring.dto.MemberDto;
 import com.sbank.spring.dto.SigninDto;
 import com.sbank.spring.dto.TokenDto;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,5 +64,11 @@ public class AuthController {
     @PostMapping("/api/user/info")
     public ResponseEntity<MemberDto> userInfo() {
         return ResponseEntity.ok(memberService.memberInfo());
+    }
+
+    @Operation(summary = "비밀번호 변경", description = "비밀번호 변경 성공 시 true, 실패 시 false 리턴")
+    @PutMapping("/api/user/changePwd")
+    public ResponseEntity<Boolean> changePwd(@RequestBody ChangePwdDto changePwdDto) {
+        return ResponseEntity.ok(memberService.changePwd(changePwdDto));
     }
 }
