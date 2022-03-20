@@ -6,7 +6,6 @@ import com.sbank.spring.jwt.JwtSecurityConfig;
 import com.sbank.spring.jwt.TokenProvider;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -63,7 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests() //HttpServletRequest를 사용하는 요청들에 대한 접근 제한을 설정
             //()안의 api에 대한 요청은 인증없이 접근을 허용함
             // .antMatchers("/api/user/**").permitAll()
-            .antMatchers("/api/user/hello").permitAll() //Test API
             .antMatchers("/api/user/signin").permitAll() //로그인 API
             .antMatchers("/api/user/signup").permitAll() //회원가입 API
             .antMatchers("/api/user/duplicate/**").permitAll() //중복검사 API
