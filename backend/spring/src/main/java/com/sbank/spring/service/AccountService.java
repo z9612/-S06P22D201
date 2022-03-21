@@ -6,6 +6,7 @@ import com.sbank.spring.util.SecurityUtil;
 import javax.transaction.Transactional;
 
 import com.sbank.spring.dto.AccountDto;
+import com.sbank.spring.entity.Account;
 import com.sbank.spring.entity.Member;
 import com.sbank.spring.repository.AccountRepository;
 
@@ -36,6 +37,15 @@ public class AccountService {
             if(!accountRepository.existsByAccountNumber(accountNumber)) ok = true;
         }
         return AccountDto.from(accountRepository.save(AccountDto.toEntity(memberNo, accountNumber)));
+    }
+
+    @Transactional //계좌 번호로 사용자 조회
+    public String findUserNameByAccount(String accountNumber) {
+        if(accountRepository.existsByAccountNumber(accountNumber)) { //계좌가 존재하는 계좌인 경우
+            Account account = accountRepository.findMemberByAccountNumber(accountNumber);
+            Member member = memberRepository.findByNo(account.getMemberNo());
+            return member.getName();
+        }else return "no";
     }
 
     
