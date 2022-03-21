@@ -1,6 +1,8 @@
 package com.sbank.spring.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -42,4 +44,8 @@ public class Member implements Serializable {
 
     @Column(nullable = false)
     private String authority;
+
+    @OneToMany
+    @JoinColumn(name = "memberNo")
+    private Collection<Account> accounts; //FK 설정
 }
