@@ -15,7 +15,7 @@ spring:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://j6d201.p.ssafy.io:3306/sbank?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
         username: root
-        password: root
+        password: sbankd201**
     
     sql:
         init:
