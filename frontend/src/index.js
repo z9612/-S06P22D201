@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
+import 'bootstrap/dist/css/bootstrap.css';
+=======
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise';
 import { applyMiddleware, createStore } from 'redux';
@@ -10,6 +13,7 @@ import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers';
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
+>>>>>>> aa9d60a346a2698b5ecd9cb67e6adaacc4ee1aa6
 
 ReactDOM.render(
   // <React.StrictMode>
