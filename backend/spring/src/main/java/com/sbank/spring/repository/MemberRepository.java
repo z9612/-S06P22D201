@@ -11,4 +11,5 @@ public interface MemberRepository extends JpaRepository<Member, Long>{
     boolean existsByEmail(String email); //이메일 중복검사
     boolean existsById(String id); //아이디 중복검사
     Member findById(Optional<String> id); //회원정보조회
+    Member findByNo(Long no);
 }

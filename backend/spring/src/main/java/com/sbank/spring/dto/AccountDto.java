@@ -16,6 +16,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountDto {
+
+    private Long memberNo;
     
     private String bankName;
 
