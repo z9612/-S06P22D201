@@ -48,10 +48,16 @@ public class AccountService {
     @Transactional //계좌 번호로 사용자 조회
     public String findUserNameByAccount(String accountNumber) {
         if(accountRepository.existsByAccountNumber(accountNumber)) { //계좌가 존재하는 계좌인 경우
-            Account account = accountRepository.findMemberByAccountNumber(accountNumber);
+            Account account = accountRepository.findByAccountNumber(accountNumber);
             Member member = memberRepository.findByNo(account.getMemberNo());
             return member.getName();
         }else return "no";
+    }
+
+    @Transactional //잔액 조회
+    public Integer findBalanceByAccountNumber(String accountNumber) {
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        return account.getBalance();
     }
 
     
