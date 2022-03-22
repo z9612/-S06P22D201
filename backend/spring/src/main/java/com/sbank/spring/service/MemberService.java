@@ -24,9 +24,9 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     
     @Transactional //트랜잭션 속성 부여
-    public MemberDto signup(MemberDto memberDto) {
+    public Member signup(MemberDto memberDto) {
         memberDto.setAuthority("ROLE_USER"); //lombok 방식으로 해결되면 지울 것!
-        return MemberDto.from(memberRepository.save(MemberDto.toEntity(memberDto, passwordEncoder)));
+        return memberRepository.save(MemberDto.toEntity(memberDto, passwordEncoder));
     }
 
     @Transactional //아이디 중복 검사

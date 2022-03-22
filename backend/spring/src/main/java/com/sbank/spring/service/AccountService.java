@@ -25,8 +25,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     @Transactional //계좌 생성
-    public AccountDto createAccount() {
-        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId());
+    public AccountDto createAccount(Member member) {
         Long memberNo = member.getNo();
         String accountNumber = "1129";
         boolean ok = false;
@@ -39,13 +38,26 @@ public class AccountService {
         return AccountDto.from(accountRepository.save(AccountDto.toEntity(memberNo, accountNumber)));
     }
 
+    @Transactional //자신의 계좌 조회
+    public AccountDto findMyAccount() {
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId());
+        Long memberNo = member.getNo();
+        return AccountDto.from(accountRepository.getById(memberNo));
+    }
+
     @Transactional //계좌 번호로 사용자 조회
     public String findUserNameByAccount(String accountNumber) {
         if(accountRepository.existsByAccountNumber(accountNumber)) { //계좌가 존재하는 계좌인 경우
-            Account account = accountRepository.findMemberByAccountNumber(accountNumber);
+            Account account = accountRepository.findByAccountNumber(accountNumber);
             Member member = memberRepository.findByNo(account.getMemberNo());
             return member.getName();
         }else return "no";
+    }
+
+    @Transactional //잔액 조회
+    public Integer findBalanceByAccountNumber(String accountNumber) {
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        return account.getBalance();
     }
 
     

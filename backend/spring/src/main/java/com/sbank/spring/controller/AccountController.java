@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @Tag(name = "AccountController", description = "계좌 관리 API")
@@ -26,15 +26,22 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @Operation(summary="계좌 생성")
-    @PostMapping(value="/create")
+    @Operation(summary="자신의 계좌 조회")
+    @GetMapping(value="/lookup")
     public ResponseEntity<AccountDto> createAccount() {
-        return ResponseEntity.ok(accountService.createAccount());
+        return ResponseEntity.ok(accountService.findMyAccount());
     }
 
     @Operation(summary = "계좌번호로 사용자 조회", description="있는 계좌번호라면 사용자 이름, 없는 계좌번호라면 no 리턴")
-    @GetMapping(value = "/api/account/find/byAccount/{account}")
+    @GetMapping(value = "/find/byAccount/{account}")
     public ResponseEntity<String> findUserNameByAccount(@PathVariable String account) {
         return ResponseEntity.ok(accountService.findUserNameByAccount(account));
     }
+
+    @Operation(summary = "잔액 조회")
+    @GetMapping(value="/find/account/balance/{account}")
+    public ResponseEntity<Integer> getMethodName(@PathVariable String account) {
+        return ResponseEntity.ok(accountService.findBalanceByAccountNumber(account));
+    }
+    
 }
