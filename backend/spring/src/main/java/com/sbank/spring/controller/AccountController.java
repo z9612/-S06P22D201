@@ -26,14 +26,14 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @Operation(summary="계좌 생성")
-    @PostMapping(value="/create")
+    @Operation(summary="자신의 계좌 조회")
+    @PostMapping(value="/lookup")
     public ResponseEntity<AccountDto> createAccount() {
-        return ResponseEntity.ok(accountService.createAccount());
+        return ResponseEntity.ok(accountService.findMyAccount());
     }
 
     @Operation(summary = "계좌번호로 사용자 조회", description="있는 계좌번호라면 사용자 이름, 없는 계좌번호라면 no 리턴")
-    @GetMapping(value = "/api/account/find/byAccount/{account}")
+    @GetMapping(value = "/find/byAccount/{account}")
     public ResponseEntity<String> findUserNameByAccount(@PathVariable String account) {
         return ResponseEntity.ok(accountService.findUserNameByAccount(account));
     }

@@ -2,10 +2,13 @@ package com.sbank.spring.controller;
 
 import javax.validation.Valid;
 
+import com.sbank.spring.dto.AccountDto;
 import com.sbank.spring.dto.ChangePwdDto;
 import com.sbank.spring.dto.MemberDto;
 import com.sbank.spring.dto.SigninDto;
 import com.sbank.spring.dto.TokenDto;
+import com.sbank.spring.entity.Member;
+import com.sbank.spring.service.AccountService;
 import com.sbank.spring.service.AuthService;
 import com.sbank.spring.service.MemberService;
 
@@ -33,6 +36,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final MemberService memberService;
+    private final AccountService accountService;
     
     @Operation(summary="로그인")
     @PostMapping("/signin")
@@ -43,9 +47,12 @@ public class AuthController {
     @Operation(summary="회원가입", description="회원가입 성공 시 true, 실패 시 false 리턴")
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signup(@Valid @RequestBody MemberDto memberDto) {
-        MemberDto member = memberService.signup(memberDto);
-        if(member != null) return ResponseEntity.ok(true);
-        else return ResponseEntity.ok(false);
+        Member member = memberService.signup(memberDto);
+        if(member != null) {
+            AccountDto accountDto = accountService.createAccount(member); //1인 1계좌만 생성
+            if(accountDto != null) return ResponseEntity.ok(true);
+            else return ResponseEntity.ok(false);
+        }else return ResponseEntity.ok(false);
     }
 
     @Operation(summary="아이디 중복 검사", description="있는 아이디라면 true, 없는 아이디라면 false 리턴")
