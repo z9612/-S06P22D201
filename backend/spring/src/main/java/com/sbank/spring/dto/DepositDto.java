@@ -17,10 +17,6 @@ public class DepositDto {
 
     private String senderAccount;
 
-    private String receiver;
-
-    private String receiverAccount;
-
     private int statement;
 
     private int money;

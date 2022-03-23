@@ -1,8 +1,12 @@
 package com.sbank.spring.controller;
 
+import java.util.List;
+
 import com.sbank.spring.dto.AccountDto;
 import com.sbank.spring.dto.DepositDto;
 import com.sbank.spring.dto.HistoryDto;
+import com.sbank.spring.dto.TransferDto;
+import com.sbank.spring.entity.History;
 import com.sbank.spring.service.AccountService;
 
 import org.springframework.http.ResponseEntity;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,7 +55,19 @@ public class AccountController {
     
     @Operation(summary = "계좌 이체", description="0: 입금, 1: 출금")
     @PostMapping(value="/transfer")
-    public ResponseEntity<HistoryDto> transferMoney(@RequestBody DepositDto depositDto) {
-        return ResponseEntity.ok(accountService.transferMoney(depositDto));
+    public ResponseEntity<HistoryDto> transferMoney(@RequestBody TransferDto transferDto) {
+        return ResponseEntity.ok(accountService.transferMoney(transferDto));
+    }
+
+    @Operation(summary = "입금")
+    @PutMapping(value="/transfer")
+    public ResponseEntity<HistoryDto> depositMoney(@RequestBody DepositDto depositDto) {
+        return ResponseEntity.ok(accountService.depositMoney(depositDto));
+    }
+
+    @Operation(summary = "내역 조회")
+    @GetMapping(value="/find/account/record/{account}")
+    public ResponseEntity<List<History>> recordHistory(@PathVariable String account) {
+        return ResponseEntity.ok(accountService.recordHistory(account));
     }
 }

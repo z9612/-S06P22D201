@@ -3,11 +3,14 @@ package com.sbank.spring.service;
 import com.sbank.spring.repository.MemberRepository;
 import com.sbank.spring.util.SecurityUtil;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import com.sbank.spring.dto.AccountDto;
 import com.sbank.spring.dto.DepositDto;
 import com.sbank.spring.dto.HistoryDto;
+import com.sbank.spring.dto.TransferDto;
 import com.sbank.spring.entity.Account;
 import com.sbank.spring.entity.History;
 import com.sbank.spring.entity.Member;
@@ -67,24 +70,35 @@ public class AccountService {
     }
 
     @Transactional //계좌 이체
-    public HistoryDto transferMoney(DepositDto depositDto) {
-        Account senderAccount = accountRepository.findByAccountNumber(depositDto.getSenderAccount());
-        Account receiverAccount = accountRepository.findByAccountNumber(depositDto.getReceiverAccount());
+    public HistoryDto transferMoney(TransferDto transferDto) {
+        Account senderAccount = accountRepository.findByAccountNumber(transferDto.getSenderAccount());
+        Account receiverAccount = accountRepository.findByAccountNumber(transferDto.getReceiverAccount());
         if(senderAccount != null && receiverAccount != null) { // 두 계좌 모두 존재하는 계좌
             int balance = senderAccount.getBalance();
-            if(balance >= depositDto.getMoney()) { //보낼 금액보다 크거나 같은 경우만 가능
-                History history = historyRepository.save(HistoryDto.toEntity(depositDto, senderAccount.getAccountId()));
-                senderAccount.setBalance(balance - depositDto.getMoney());
+            if(balance >= transferDto.getMoney()) { //보낼 금액보다 크거나 같은 경우만 가능
+                History history = historyRepository.save(HistoryDto.toEntity(transferDto, senderAccount.getAccountId()));
+                senderAccount.setBalance(balance - transferDto.getMoney());
                 accountRepository.save(senderAccount);
 
-                depositDto.setStatement(1);
+                transferDto.setStatement(1);
 
-                historyRepository.save(HistoryDto.toEntity(depositDto, receiverAccount.getAccountId()));
-                receiverAccount.setBalance(receiverAccount.getBalance() + depositDto.getMoney());
+                historyRepository.save(HistoryDto.toEntity(transferDto, receiverAccount.getAccountId()));
+                receiverAccount.setBalance(receiverAccount.getBalance() + transferDto.getMoney());
                 accountRepository.save(receiverAccount);
                 return HistoryDto.from(history);
             }else return null;
         }else return null;
+    }
+
+    @Transactional //입금
+    public HistoryDto depositMoney(DepositDto depositDto) {
+        return null;
+    }
+
+    @Transactional //내역 조회
+    public List<History> recordHistory(String accountNumber) {
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        return historyRepository.findByAccountId(account.getAccountId());
     }
 
     
