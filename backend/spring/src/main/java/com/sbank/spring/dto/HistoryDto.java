@@ -25,14 +25,14 @@ public class HistoryDto {
 
     private String transactionDate;
 
-    public static History toEntity(DepositDto depositDto, Long accountId) {
+    public static History toEntity(TransferDto transferDto, Long accountId) {
         return History.builder()
                     .accountId(accountId)
-                    .sender(depositDto.getSender())
-                    .receiver(depositDto.getReceiver())
-                    .statement(depositDto.getStatement())
-                    .money(depositDto.getMoney())
-                    .transactionDate(depositDto.getTransactionDate())
+                    .sender(transferDto.getSender())
+                    .receiver(transferDto.getReceiver())
+                    .statement(transferDto.getStatement())
+                    .money(transferDto.getMoney())
+                    .transactionDate(transferDto.getTransactionDate())
                     .build();
     }
 
