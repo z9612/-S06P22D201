@@ -40,7 +40,43 @@
 
 ---
 
-![image](https://github.com/z9612/S06P22D201/assets/50051891/191e7506-8437-4f82-988f-470c6cb89284)
+## 🛠 Dev Skills
+
+[https://img.shields.io/badge/JAVA-1.8-blue?style=plastic&logo=java](https://img.shields.io/badge/JAVA-1.8-blue?style=plastic&logo=java)
+
+[https://img.shields.io/badge/spring_boot-2.3.2.RELEASE-brightgreen?style=plastic&logo=Spring](https://img.shields.io/badge/spring_boot-2.3.2.RELEASE-brightgreen?style=plastic&logo=Spring)
+
+[https://img.shields.io/badge/Spring_Security-5.4.6-brightgreen?style=plastic&logo=Spring](https://img.shields.io/badge/Spring_Security-5.4.6-brightgreen?style=plastic&logo=Spring)
+
+[https://img.shields.io/badge/Spring%20Data%20JPA-4.3.1-brightgreen?style=plastic&logo=Spring](https://img.shields.io/badge/Spring%20Data%20JPA-4.3.1-brightgreen?style=plastic&logo=Spring)
+
+[https://img.shields.io/badge/Lombok-1.18.12-red?style=plastic&logo=ProjectLombok](https://img.shields.io/badge/Lombok-1.18.12-red?style=plastic&logo=ProjectLombok)
+
+[https://img.shields.io/badge/javascript-6.0.0-yellow?style=plastic&logo=javascript](https://img.shields.io/badge/javascript-6.0.0-yellow?style=plastic&logo=javascript)
+
+[https://img.shields.io/badge/React-17.0.2-blue?style=plastic&logo=react](https://img.shields.io/badge/React-17.0.2-blue?style=plastic&logo=react)
+
+[https://img.shields.io/badge/Redux-7.2.6-blue?style=plastic&logo=%08redux](https://img.shields.io/badge/Redux-7.2.6-blue?style=plastic&logo=%08redux)
+
+[https://img.shields.io/badge/axios-0.25.0-red?style=plastic&logo=axios](https://img.shields.io/badge/axios-0.25.0-red?style=plastic&logo=axios)
+
+[https://img.shields.io/badge/fastAPI-0.75.1-green?style=plastic&logo=fastAPI](https://img.shields.io/badge/fastAPI-0.75.1-green?style=plastic&logo=fastAPI)
+
+[https://img.shields.io/badge/pytorch-1.7.1-red?style=plastic&logo=pytorch](https://img.shields.io/badge/pytorch-1.7.1-red?style=plastic&logo=pytorch)
+
+[https://img.shields.io/badge/torchaudio-0.7.2-red?style=plastic&logo=torchaudio](https://img.shields.io/badge/torchaudio-0.7.2-red?style=plastic&logo=torchaudio)
+
+[https://img.shields.io/badge/cuda-10.2-green?style=plastic&logo=cuda](https://img.shields.io/badge/cuda-10.2-green?style=plastic&logo=cuda)
+
+[https://img.shields.io/badge/AWS-EC2-orange?style=plastic&logo=amazon](https://img.shields.io/badge/AWS-EC2-orange?style=plastic&logo=amazon)
+
+[https://img.shields.io/badge/docker-19.03.8-blue?color=blue&style=plastic&logo=docker](https://img.shields.io/badge/docker-19.03.8-blue?color=blue&style=plastic&logo=docker)
+
+[https://img.shields.io/badge/Jenkins-2.263.4-%236DB33F?color=red&style=plastic&logo=Jenkins](https://img.shields.io/badge/Jenkins-2.263.4-%236DB33F?color=red&style=plastic&logo=Jenkins)
+
+[https://img.shields.io/badge/JIRA-Atlassian-blue?style=plastic&logo=jira](https://img.shields.io/badge/JIRA-Atlassian-blue?style=plastic&logo=jira)
+
+[https://img.shields.io/badge/Notion-2020.12-lightgrey?style=plastic&logo=notion](https://img.shields.io/badge/Notion-2020.12-lightgrey?style=plastic&logo=notion)
 
 
 ## 💬 Documents
